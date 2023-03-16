@@ -7,9 +7,10 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 
 
+import PrivateRoute from './components/PrivateRoute';
+
+
 function App() {
-
-
 
   return (
     <div className="App">
@@ -18,7 +19,10 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/" element={<Dashboard />} />
+
+            <Route path='/' element={<PrivateRoute />}>
+              <Route path='/' element={<Dashboard />} />
+            </Route>
           </Routes>
         </div>
       </Router>
