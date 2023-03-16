@@ -38,6 +38,7 @@ const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex
 const createPost = async (req, res) => {
     const file = req.file
     const { caption } = req.body
+
     const imageName = generateFileName()
     const totalLikes = 0
 
@@ -50,7 +51,7 @@ const createPost = async (req, res) => {
     const post = await Post.create({
         imageName,
         caption,
-        totalLikes
+        totalLikes,
     })
 
     res.status(201).send(post)
@@ -119,9 +120,28 @@ const deletePost = async (req, res) => {
 
 
 
+//update likes
+//PUT /api/v1/posts/:id
+//public
+const updateLikes = async (req, res) => {
+    let post = await Post.findById(req.params.id)
+
+    if (!post) {
+        return new ErrorResponse(`Post not found with id of ${id}`, 404)
+    }
+
+    post = await Post.findByIdAndUpdate(req.params.id, { $inc: { totalLikes: 1 } })
+
+    res.status(200)
+}
+
+
+
+
 module.exports = {
     getPosts,
     createPost,
     getPost,
-    deletePost
+    deletePost,
+    updateLikes
 }

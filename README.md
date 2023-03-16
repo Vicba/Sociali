@@ -3,9 +3,13 @@ Sociali is a simple instagram like app made with MERN stack
 
 
 # werkpunten
-delete post access code denied
-en dan nog update voor de likes
+delete post access code denied (only if user)
+
 add user to post
+
+
+
+
 
 
 
