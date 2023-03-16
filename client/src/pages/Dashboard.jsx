@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import Nav from '../components/Nav'
 
 export default function Dashboard() {
     const [file, setFile] = useState()
@@ -51,6 +52,9 @@ export default function Dashboard() {
 
     return (
         <div className="Dashboard">
+            <Nav />
+
+
             <form onSubmit={submit} style={{ width: 650 }}>
                 <input onChange={fileSelected} type="file" accept="image/*"></input>
                 <input value={caption} onChange={e => setCaption(e.target.value)} type="text" placeholder='Caption'></input>
