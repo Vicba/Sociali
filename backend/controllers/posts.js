@@ -64,7 +64,7 @@ const createPost = async (req, res) => {
 // access: public 
 const getPost = async (req, res) => {
     const { id } = req.params
-    console.log(id)
+
     const post = await Post.findById(id);
 
     if (!post) {
@@ -77,8 +77,51 @@ const getPost = async (req, res) => {
 
 
 
+
+const cloudFront = new CloudFrontClient({
+    region: process.env.BUCKET_REGION,
+    credentials: {
+        accessKeyId: process.env.ACCESS_KEY,
+        secretAccessKey: process.env.SECRET_ACCESS_KEY,
+    }
+})
+
+// DELETE
+// route: /api/posts/:id
+// access: public 
+const deletePost = async (req, res) => {
+    const { id } = req.params
+
+    const post = await Post.findById(id);
+
+    await deleteFile(post.imageName)
+
+
+    //nullify the cloudfront cache for that image
+    const cfCommand = new CreateInvalidationCommand({
+        DistributionId: cloudfrontDistributionId,
+        InvalidationBatch: {
+            CallerReference: post.imageName,
+            Paths: {
+                Quantity: 1,
+                Items: [
+                    "/" + post.imageName
+                ]
+            }
+        }
+    })
+    await cloudFront.send(cfCommand)
+
+    await Post.deleteOne({ _id: ObjectId(id) })
+    res.send(post)
+}
+
+
+
+
 module.exports = {
     getPosts,
     createPost,
-    getPost
+    getPost,
+    deletePost
 }
