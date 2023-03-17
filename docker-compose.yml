@@ -1,0 +1,17 @@
+version: '3'
+services:
+  client:
+    build: ./client
+    container_name: client_c
+    ports:
+      - 3000:3000
+    stdin_open: true
+    tty: true
+  backend:
+    build: ./backend
+    container_name: backend_c
+    ports:
+      - 8080:8080
+    volumes:
+      - ./backend:/app #backend folder in app folder in container
+      - /app/node_modules

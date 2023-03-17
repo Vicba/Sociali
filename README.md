@@ -14,18 +14,21 @@ add user to post
 # Things to add clean or fix:
 URGENT
 
-style login and register and nav
-make nav with logout
+create modal to make post
 
 auth with context
+
+add user to posts
+fix delete post (only if user)
+
+
 
 
 LESS URGENT
 
+add like functionality
 hook to fetch data
-asynchandler to posts
-add user to posts 
-fix delete post (only if user)
+asynchandler to posts 
 url to get cloudfront is in client but needs to be in backend
 
 

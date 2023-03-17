@@ -51,28 +51,31 @@ export default function Dashboard() {
 
 
     return (
-        <div className="Dashboard">
+        <div>
             <Nav />
+            <div className="min-h-screen w-full bg-gray-100 flex flex-col items-center justify-center">
+                <div className='w-4/5 md:w-1/2 bg-white flex flex-col items-center'>
+                    <form onSubmit={submit}>
+                        <input onChange={fileSelected} type="file" accept="image/*"></input>
+                        <input value={caption} onChange={e => setCaption(e.target.value)} type="text" placeholder='Caption'></input>
+                        <button type="submit">Submit</button>
+                    </form>
 
 
-            <form onSubmit={submit} style={{ width: 650 }}>
-                <input onChange={fileSelected} type="file" accept="image/*"></input>
-                <input value={caption} onChange={e => setCaption(e.target.value)} type="text" placeholder='Caption'></input>
-                <button type="submit">Submit</button>
-            </form>
 
 
+                    <div className="posts" style={{ marginTop: '5rem' }}>
+                        {posts.map(post => ( //TODO make component of post
+                            <div key={`post-${post.id}`} className="post">
 
-
-            <div className="posts" style={{ marginTop: '5rem' }}>
-                {posts.map(post => (
-                    <div key={`post-${post.id}`} className="post">
-
-                        <img src={'https://d3vh9lvfq43oov.cloudfront.net/' + post.imageName} style={{ width: '450px', height: '350px', objectFit: 'cover' }} />
-                        <h3>{post.caption}</h3>
+                                <img src={'https://d3vh9lvfq43oov.cloudfront.net/' + post.imageName} style={{ width: '450px', height: '350px', objectFit: 'cover' }} />
+                                <h3>{post.caption}</h3>
+                            </div>
+                        ))}
                     </div>
-                ))}
+                </div>
             </div>
         </div>
+
     )
 }
