@@ -60,7 +60,7 @@ export default function Login() {
                                 className="w-full border border-gray-400 p-2 rounded"
                             />
                         </div>
-                        <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">
+                        <button type="submit" className="bg-blue text-white font-bold py-2 px-4 rounded hover:bg-darkBlue">
                             Continue
                         </button>
                     </form>

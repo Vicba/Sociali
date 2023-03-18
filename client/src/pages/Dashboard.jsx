@@ -2,12 +2,11 @@ import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Nav from '../components/Nav'
+import Modal from '../components/Modal'
+
 
 export default function Dashboard() {
-    const [file, setFile] = useState()
-    const [caption, setCaption] = useState("")
-
-
+    const [openModal, setOpenModal] = useState(false)
 
 
     /*home*/
@@ -32,48 +31,20 @@ export default function Dashboard() {
 
 
 
-    const submit = async (event) => {
-        const formData = new FormData();
-        formData.append("image", file)
-        formData.append("caption", caption)
-        console.log(formData.keys)
-        console.log(formData)
-
-
-        {/*const userInfo = JSON.parse(localStorage.getItem('userInfo'))
-        console.log(userInfo.token)
-        const config = {
-            headers: {
-                Authorization: `Bearer ${userInfo.token}`,
-            }
-        }
-    console.log(config)*/}
-
-        await axios.post("http://localhost:8080/api/posts", formData)
-    }
-
-    const fileSelected = event => {
-        const file = event.target.files[0]
-        setFile(file)
-    }
-
-
-
     return (
         <div>
             <Nav />
-            <div className="min-h-screen w-full bg-gray-100 flex flex-col items-center justify-center">
+            <div className="min-h-screen w-full bg-dashboardBackground flex flex-col items-center justify-center">
                 <div className='w-4/5 md:w-1/2 bg-white flex flex-col items-center'>
-                    <form onSubmit={submit}>
-                        <input onChange={fileSelected} type="file" accept="image/*"></input>
-                        <input value={caption} onChange={e => setCaption(e.target.value)} type="text" placeholder='Caption'></input>
-                        <button type="submit">Submit</button>
-                    </form>
+                    <div>
+                        <button onClick={() => setOpenModal(true)} className="bg-gradient-to-r from-purple-400 to-pink-600 text-white py-2 px-4 rounded-xl">Create a Post</button>
+                        <Modal open={openModal} onClose={() => setOpenModal(false)} />
+                    </div>
 
 
 
 
-                    <div className="posts" style={{ marginTop: '5rem' }}>
+                    <div className="posts" style={{ marginTop: '3rem' }}>
                         {posts.map(post => ( //TODO make component of post
                             <div key={`post-${post.id}`} className="post">
 
