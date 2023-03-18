@@ -16,11 +16,13 @@ URGENT
 
 create modal to make post
 
-auth with context
-
 add user to posts
 fix delete post (only if user)
 
+
+
+
+auth with context
 
 
 

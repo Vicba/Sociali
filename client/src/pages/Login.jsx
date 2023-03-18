@@ -19,7 +19,7 @@ export default function Login() {
         try {
             const user = await axios.post('http://localhost:8080/api/users/login', { email, password })
 
-            localStorage.setItem('userInfo', JSON.stringify(user))
+            localStorage.setItem('userInfo', JSON.stringify(user.data))
 
             navigate('/')
         } catch (err) {

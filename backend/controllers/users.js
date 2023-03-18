@@ -80,7 +80,7 @@ const loginUser = asyncHandler(async (req, res) => {
 //generate jwt token
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
-        expiresIn: '1d'
+        expiresIn: '30d'
     })
 }
 

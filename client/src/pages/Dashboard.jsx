@@ -15,32 +15,41 @@ export default function Dashboard() {
 
     useEffect(() => {
         async function getPosts() {
-            const result = await axios.get("http://localhost:8080/api/posts")
+            const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${userInfo.token}`,
+                }
+            }
+
+            const result = await axios.get("http://localhost:8080/api/posts", config)
             console.log(result.data)
             setPosts(result.data)
         }
         getPosts()
     }, [])
-    //////////////////////////////////////////
-    console.log(posts)
 
-    const submit = async event => {
+
+
+    const submit = async (event) => {
         const formData = new FormData();
         formData.append("image", file)
         formData.append("caption", caption)
         console.log(formData.keys)
         console.log(formData)
 
-        /*await fetch('/api/posts', {
+
+        {/*const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+        console.log(userInfo.token)
+        const config = {
             headers: {
-                'Content-Type': 'multipart/form-data'
-            },
-            method: 'POST',
-            body: formData,
-        });*/
+                Authorization: `Bearer ${userInfo.token}`,
+            }
+        }
+    console.log(config)*/}
 
-
-        await axios.post("http://localhost:8080/api/posts", formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+        await axios.post("http://localhost:8080/api/posts", formData)
     }
 
     const fileSelected = event => {

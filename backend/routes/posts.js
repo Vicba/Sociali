@@ -8,16 +8,17 @@ const upload = multer({ storage: storage })
 const { getPosts, createPost, getPost, deletePost, updateLikes } = require("../controllers/posts")
 
 
+const { protect } = require('../middleware/authMiddleware')
 
 
 
 //routes
-router.route('/').get(getPosts)
+router.route('/').get(protect, getPosts)
 router.route('/').post(upload.single('image'), createPost)
 
-router.route("/:id").get(getPost)
-router.route("/:id").delete(deletePost)
-router.route("/:id").put(updateLikes)
+router.route("/:id").get(protect, getPost)
+router.route("/:id").delete(protect, deletePost)
+router.route("/:id").put(protect, updateLikes)
 
 
 module.exports = router
