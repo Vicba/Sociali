@@ -7,20 +7,13 @@ delete post access code denied (only if user)
 
 add user to post
 
+update likes
 
 
 
 
 # Things to add clean or fix:
 URGENT
-
-create modal to make post
-
-add user to posts
-fix delete post (only if user)
-
-
-
 
 auth with context
 

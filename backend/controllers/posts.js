@@ -3,6 +3,7 @@ const crypto = require('crypto')
 
 const ErrorResponse = require('../utils/errorResponse')
 const Post = require('../models/Post')
+const User = require('../models/User')
 
 const { uploadFile, deleteFile, getObjectSignedUrl } = require('../utils/s3')
 
@@ -18,6 +19,7 @@ const cloudfrontDistributionId = process.env.CLOUD_FRONT_DIST_ID
 // route: /api/posts
 // access: public 
 const getPosts = async (req, res) => {
+
     const posts = await Post.find().sort({ createdAt: -1 })
     for (let post of posts) {
         //post.imageUrl = await getObjectSignedUrl(post.imageName)    dit kan ook maar zonder cloudfront
@@ -52,6 +54,7 @@ const createPost = async (req, res) => {
         imageName,
         caption,
         totalLikes,
+        user: req.user._id
     })
 
     res.status(201).send(post)
@@ -67,7 +70,6 @@ const getPost = async (req, res) => {
     const { id } = req.params
 
     const post = await Post.findById(id);
-
     if (!post) {
         return new ErrorResponse(`Post not found with id of ${id}`, 404)
     }
@@ -94,7 +96,6 @@ const deletePost = async (req, res) => {
     const { id } = req.params
 
     const post = await Post.findById(id);
-
     await deleteFile(post.imageName)
 
 

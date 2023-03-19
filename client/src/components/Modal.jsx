@@ -16,16 +16,16 @@ function Modal({ open, onClose }) {
         console.log(formData)
 
 
-        {/*const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'))
         console.log(userInfo.token)
         const config = {
             headers: {
                 Authorization: `Bearer ${userInfo.token}`,
             }
         }
-    console.log(config)*/}
+        console.log(config)
 
-        await axios.post("http://localhost:8080/api/posts", formData)
+        await axios.post("http://localhost:8080/api/posts", formData, config)
     }
 
     const fileSelected = event => {
