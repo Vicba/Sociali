@@ -89,6 +89,7 @@ const cloudFront = new CloudFrontClient({
     }
 })
 
+
 // DELETE
 // route: /api/posts/:id
 // access: public 
@@ -97,7 +98,6 @@ const deletePost = async (req, res) => {
 
     const post = await Post.findById(id);
     await deleteFile(post.imageName)
-
 
     //nullify the cloudfront cache for that image
     const cfCommand = new CreateInvalidationCommand({
@@ -114,7 +114,7 @@ const deletePost = async (req, res) => {
     })
     await cloudFront.send(cfCommand)
 
-    await Post.deleteOne({ _id: ObjectId(id) })
+    await Post.deleteOne(post._id)
     res.send(post)
 }
 
