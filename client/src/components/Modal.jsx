@@ -7,25 +7,24 @@ function Modal({ open, onClose }) {
     const [caption, setCaption] = useState("")
 
 
-    const submit = async (e) => {
+    const submit = (e) => {
 
         const formData = new FormData();
         formData.append("image", file)
         formData.append("caption", caption)
-        console.log(formData.keys)
-        console.log(formData)
 
 
         const userInfo = JSON.parse(localStorage.getItem('userInfo'))
-        console.log(userInfo.token)
+
         const config = {
             headers: {
                 Authorization: `Bearer ${userInfo.token}`,
             }
         }
-        console.log(config)
 
-        await axios.post("http://localhost:8080/api/posts", formData, config)
+        axios.post("http://localhost:8080/api/posts", formData, config)
+            .then(response => window.location.reload())
+            .catch(err => console.log(err.message))
     }
 
     const fileSelected = event => {

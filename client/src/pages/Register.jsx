@@ -34,7 +34,7 @@ export default function Register() {
     return (
         <div className="min-h-screen w-screen bg-gray-100 flex flex-col items-center justify-center">
             <div className="flex flex-row rounded-xl shadow-lg w-3/4 md:w-1/2">
-                <div className='hidden lg:block lg:w-1/2 h-full' >
+                <div className='hidden lg:block lg:w-1/2' >
                     <img src={Image} alt="sociali" className='h-full object-cover rounded-l-xl' />
                 </div>
                 <div className='rounded-r-xl bg-white p-8 w-full lg:w-1/2'>

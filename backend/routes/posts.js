@@ -17,7 +17,7 @@ router.route('/').get(protect, getPosts)
 router.route('/').post(upload.single('image'), protect, createPost)
 
 router.route("/:id").get(protect, getPost)
-router.route("/:id").delete(deletePost)
+router.route("/:id").delete(protect, deletePost)
 router.route("/:id").put(protect, updateLikes)
 
 

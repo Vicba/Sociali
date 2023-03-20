@@ -3,7 +3,6 @@ Sociali is a simple instagram like app made with MERN stack
 
 
 # werkpunten
-update likes
 delete button if owner
 
 

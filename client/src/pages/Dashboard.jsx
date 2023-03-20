@@ -39,7 +39,7 @@ export default function Dashboard() {
     return (
         <div>
             <Nav />
-            <div className="min-h-screen w-full bg-dashboardBackground flex flex-col items-center justify-center">
+            <div className="min-h-screen w-full bg-dashboardBackground flex flex-col items-center justify-center 3xl:w-screen">
                 <div className='h-full w-4/5 mt-5 md:w-1/2 flex flex-col items-center'>
                     <div>
                         <button onClick={() => setOpenModal(true)} className="bg-gradient-to-r from-purple-400 to-pink-600 text-white py-2 px-4 rounded-xl">Create a Post</button>
@@ -49,7 +49,7 @@ export default function Dashboard() {
 
 
 
-                    <div className="mt-4" >
+                    <div className="mt-2" >
                         {posts.map(post => ( //TODO make component of post
                             <Post key={post._id} post={post} />
                         ))}

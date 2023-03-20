@@ -4,71 +4,65 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import { AiFillHeart } from 'react-icons/ai'
 import { BsFillTrashFill } from 'react-icons/bs'
 
-
 export default function Post({ post }) {
     const [liked, setLiked] = useState(false)
     const [owner, setOwner] = useState(false)
 
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+    const userId = userInfo._id
+    const likedPostsKey = `likedPosts_${userId}`
+
+    const [likedPosts, setLikedPosts] = useState(() => {
+        const likedPostsString = localStorage.getItem(likedPostsKey)
+        return likedPostsString ? JSON.parse(likedPostsString) : []
+    })
+
 
     useEffect(() => {
-        const userInfo = JSON.parse(localStorage.getItem('userInfo'))
-        if (post.user == userInfo._id) {
+        if (post.user === userInfo._id) {
             setOwner(true)
         }
-
-        const posts = JSON.parse(localStorage.getItem('likedPosts'))
-        for (let likedPost of posts) {
-            console.log(likedPost)
-            if (likedPost._id === post._id) {
-                setLiked(true)
-            }
-        }
-    }, [liked])
-
+        setLiked(likedPosts.some((likedPost) => likedPost._id === post._id))
+    }, [post, userInfo._id, likedPosts])
 
 
     const handleLiked = () => {
-        const posts = JSON.parse(localStorage.getItem('likedPosts'))
-
-        if (!posts || posts.length == 0) {
-            localStorage.setItem('likedPosts', JSON.stringify([post]))
-            setLiked(true)
-        } else {
-            for (let likedPost of posts) {
-                console.log(likedPost)
-            }
-        }
-
-        for (let likedPost of posts) {
-            if (likedPost._id === post._id) {
-                setLiked(true)
-                console.log('clicked')
-                localStorage.setItem('likedPosts', JSON.stringify([...posts, post]))
-            }
-        }
+        const posts = [...likedPosts, post]
+        setLikedPosts(posts)
     }
 
     const handleUnliked = () => {
-        let posts = JSON.parse(localStorage.getItem('likedPosts'))
-        posts = posts.filter(likedPost => likedPost._id != post._id)
-        localStorage.setItem('likedPosts', JSON.stringify(posts))
-        setLiked(false)
-
-    }
-
+        const posts = likedPosts.filter((likedPost) => likedPost._id !== post._id)
+        setLikedPosts(posts)
+    };
 
 
     const handleDelete = () => {
+        // TODO: Implement handleDelete
 
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`,
+            }
+        }
+
+        axios.delete(`http://localhost:8080/api/posts/${post._id}`, config)
+            .then(response => window.location.reload())
+            .catch(err => console.log(err.message))
     }
+
+
+    useEffect(() => {
+        localStorage.setItem(likedPostsKey, JSON.stringify(likedPosts))
+    }, [likedPosts, likedPostsKey])
 
     return (
         <div className="bg-white p-8 my-6 rounded-xl">
-            <img src={'https://d3vh9lvfq43oov.cloudfront.net/' + post.imageName} style={{ width: '450px', height: '350px', objectFit: 'cover' }} />
-            <div className='flex flex-row py-6 justify-between'>
-                <h3 className='text-lg font-semibold'>{post.caption}</h3>
-                <div className='flex flex-row gap-2'>
-                    {liked ? <AiFillHeart color='red' size={30} onClick={handleUnliked} /> : <AiOutlineHeart size={30} onClick={handleLiked} />}
+            <img src={`https://d3vh9lvfq43oov.cloudfront.net/${post.imageName}`} style={{ width: '450px', height: '350px', objectFit: 'cover' }} />
+            <div className="flex flex-row py-6 justify-between">
+                <h3 className="text-lg font-semibold">{post.caption}</h3>
+                <div className="flex flex-row gap-2">
+                    {liked ? <AiFillHeart color="red" size={30} onClick={handleUnliked} /> : <AiOutlineHeart size={30} onClick={handleLiked} />}
                     {owner ? <BsFillTrashFill size={30} onClick={handleDelete} /> : null}
                 </div>
             </div>
