@@ -42,12 +42,12 @@ function Modal({ open, onClose }) {
                 <form onSubmit={submit} className="w-full flex flex-col items-start justify-center">
                     <div className='mb-4 text-left flex flex-col'>
                         <label className='font-bold'>Image:</label>
-                        <input onChange={fileSelected} type="file" accept="image/*"></input>
+                        <input onChange={fileSelected} type="file" accept="image/*" className='border border-solid  rounded'></input>
                     </div>
 
                     <div className='mb-4 text-left flex flex-col'>
                         <label className='font-bold'>Description:</label>
-                        <input value={caption} onChange={e => setCaption(e.target.value)} type="text" placeholder='Description'></input>
+                        <input value={caption} onChange={e => setCaption(e.target.value)} type="text" placeholder='Description' className='border border-solid py-1 px-8 rounded'></input>
                     </div>
 
                     <button type="submit" className="w-full bg-blue text-white font-bold py-1 px-3 rounded hover:bg-darkBlue">Submit</button>

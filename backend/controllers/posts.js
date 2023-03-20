@@ -1,5 +1,6 @@
 const sharp = require('sharp')
 const crypto = require('crypto')
+const mongoose = require('mongoose')
 
 const ErrorResponse = require('../utils/errorResponse')
 const Post = require('../models/Post')
@@ -27,7 +28,6 @@ const getPosts = async (req, res) => {
     }
     res.send(posts)
 }
-
 
 
 
