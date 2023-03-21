@@ -2,7 +2,7 @@ const sharp = require('sharp')
 const crypto = require('crypto')
 const mongoose = require('mongoose')
 
-const ErrorResponse = require('../utils/errorResponse')
+const ErrorResponse = require('../utils/ErrorResponse')
 const Post = require('../models/Post')
 const User = require('../models/User')
 
