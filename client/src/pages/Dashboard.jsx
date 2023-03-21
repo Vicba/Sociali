@@ -50,7 +50,7 @@ export default function Dashboard() {
 
 
                     <div className="mt-2" >
-                        {posts.map(post => ( //TODO make component of post
+                        {posts.map(post => (
                             <Post key={post._id} post={post} />
                         ))}
                     </div>

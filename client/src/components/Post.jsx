@@ -38,7 +38,6 @@ export default function Post({ post }) {
 
 
     const handleDelete = () => {
-        // TODO: Implement handleDelete
 
         const config = {
             headers: {

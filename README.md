@@ -5,6 +5,7 @@ Sociali is a simple instagram like app made with MERN stack. You can create and 
 # Things to clean or fix:
 get auth with context
 make special hook to fetch data
+make special hook for localstorage
 
 
 # Features that could be added
