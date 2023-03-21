@@ -8,7 +8,6 @@ function Modal({ open, onClose }) {
 
 
     const submit = (e) => {
-
         const formData = new FormData();
         formData.append("image", file)
         formData.append("caption", caption)
