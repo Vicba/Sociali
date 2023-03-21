@@ -19,7 +19,7 @@ export default function Register() {
         e.preventDefault()
 
         try {
-            const user = await axios.post('http://localhost:8080/api/users/', { name, email, password })
+            const user = await axios.post('https://sociali.onrender.com/api/users/', { name, email, password })
 
             localStorage.setItem('userInfo', JSON.stringify(user))
             navigate('/')

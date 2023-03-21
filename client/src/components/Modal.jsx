@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 
@@ -8,6 +8,8 @@ function Modal({ open, onClose }) {
 
 
     const submit = (e) => {
+        e.preventDefault()
+
         const formData = new FormData();
         formData.append("image", file)
         formData.append("caption", caption)
@@ -21,7 +23,7 @@ function Modal({ open, onClose }) {
             }
         }
 
-        axios.post("http://localhost:8080/api/posts", formData, config)
+        axios.post("https://sociali.onrender.com/api/posts", formData, config)
             .then(response => window.location.reload())
             .catch(err => console.log(err.message))
     }

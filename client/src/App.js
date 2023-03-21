@@ -15,15 +15,13 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div className="container">
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path='/' element={<PrivateRoute />}>
-              <Route path='/' element={<Dashboard />} />
-            </Route>
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path='/' element={<PrivateRoute />}>
+            <Route path='/' element={<Dashboard />} />
+          </Route>
+        </Routes>
       </Router>
     </div>
   );
