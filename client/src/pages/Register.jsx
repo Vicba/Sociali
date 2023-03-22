@@ -21,7 +21,7 @@ export default function Register() {
         try {
             const user = await axios.post('https://sociali.onrender.com/api/users/', { name, email, password })
 
-            localStorage.setItem('userInfo', JSON.stringify(user))
+            localStorage.setItem('userInfo', JSON.stringify(user.data))
             navigate('/')
 
         } catch (err) {
