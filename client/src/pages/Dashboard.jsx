@@ -11,7 +11,6 @@ export default function Dashboard() {
     const [openModal, setOpenModal] = useState(false)
 
 
-    /*home*/
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
