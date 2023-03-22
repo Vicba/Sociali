@@ -2,6 +2,9 @@
 Sociali is a simple instagram like app build in MERN stack. (mongoDB, Express, React, Node)
 You can like users posts and create, delete your own posts.
 
+# Status
+Pending: still need to work on the site. (school refuses me to have free time 🙃 )
+
 
 # Things to clean or fix:
 - get auth with context
