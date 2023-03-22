@@ -4,9 +4,10 @@ You can like users posts and create, delete your own posts.
 
 
 # Things to clean or fix:
-get auth with context
-make special hook to fetch data
-make special hook for localstorage
+- get auth with context
+- make special hook to fetch data
+- make special hook for localstorage
+- need to find solution for creating post speed
 
 
 # Features that could be added in the future
