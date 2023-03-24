@@ -7,6 +7,7 @@ Pending: still need to work on the site. (school refuses me to have free time ðŸ
 
 
 # Things to clean or fix:
+- add loading state when doing api calls
 - get auth with context
 - make special hook to fetch data
 - make special hook for localstorage
