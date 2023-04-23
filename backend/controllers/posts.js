@@ -24,7 +24,7 @@ const getPosts = async (req, res) => {
     const posts = await Post.find().sort({ createdAt: -1 })
     for (let post of posts) {
         //post.imageUrl = await getObjectSignedUrl(post.imageName)    dit kan ook maar zonder cloudfront
-        post.imageUrl = "https://d3vh9lvfq43oov.cloudfront.net/" + post.imageName //cloudfront
+        post.imageUrl = "https://d1wt6smfo9bxbi.cloudfront.net/" + post.imageName //cloudfront
     }
     res.send(posts)
 }

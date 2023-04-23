@@ -17,7 +17,7 @@ export default function Login() {
         e.preventDefault()
 
         try {
-            const user = await axios.post('https://sociali.onrender.com/api/users/login', { email, password })
+            const user = await axios.post('http://localhost:8080/api/users/login', { email, password })
 
             localStorage.setItem('userInfo', JSON.stringify(user.data))
 

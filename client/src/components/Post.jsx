@@ -45,7 +45,7 @@ export default function Post({ post }) {
             }
         }
 
-        axios.delete(`https://sociali.onrender.com/api/posts/${post._id}`, config)
+        axios.delete(`http://localhost:8080/api/posts/${post._id}`, config)
             .then(response => window.location.reload())
             .catch(err => console.log(err.message))
     }
@@ -57,7 +57,7 @@ export default function Post({ post }) {
 
     return (
         <div className="bg-white p-8 my-6 rounded-xl">
-            <img src={`https://d3vh9lvfq43oov.cloudfront.net/${post.imageName}`} style={{ width: '450px', height: '350px', objectFit: 'cover' }} />
+            <img src={`https://d1wt6smfo9bxbi.cloudfront.net/${post.imageName}`} style={{ width: '450px', height: '350px', objectFit: 'cover' }} />
             <div className="flex flex-row py-6 justify-between">
                 <h3 className="text-lg font-semibold">{post.caption}</h3>
                 <div className="flex flex-row gap-2">

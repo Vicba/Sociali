@@ -23,7 +23,7 @@ export default function Dashboard() {
                 }
             }
 
-            const result = await axios.get("https://sociali.onrender.com/api/posts", config)
+            const result = await axios.get("http://localhost:8080/api/posts", config)
 
             setPosts(result.data)
         }
@@ -44,8 +44,6 @@ export default function Dashboard() {
                         <button onClick={() => setOpenModal(true)} className="bg-gradient-to-r from-purple-400 to-pink-600 text-white py-2 px-4 rounded-xl">Create a Post</button>
                         <Modal open={openModal} onClose={() => setOpenModal(false)} />
                     </div>
-
-
 
 
                     <div className="mt-2" >
