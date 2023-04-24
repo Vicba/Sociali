@@ -11,6 +11,7 @@ Pending: still need to work on the site. (school refuses me to have free time ðŸ
 ![create](https://user-images.githubusercontent.com/47187122/228641383-d4df92ae-2aa9-496c-bcb6-2c577eccd16d.png)
 
 # Things to clean or fix:
+- add signed URLs !!!
 - add loading state when doing api calls
 - get auth with context
 - make special hook to fetch data
