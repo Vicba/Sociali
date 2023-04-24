@@ -45,7 +45,7 @@ export default function Post({ post }) {
             }
         }
 
-        axios.delete(`http://localhost:8080/api/posts/${post._id}`, config)
+        axios.delete(`https://sociali.onrender.com/api/posts/${post._id}`, config)
             .then(response => window.location.reload())
             .catch(err => console.log(err.message))
     }
