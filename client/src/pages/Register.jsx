@@ -76,7 +76,7 @@ export default function Register() {
                     </form>
                     <p className="mt-4">
                         Have an account?
-                        <Link to='/login' className="text-blue-500"> Sign in</Link>
+                        <Link to='/login' className="text-blue-500">Sign in</Link>
                     </p>
                     {error ? <p className="text-red-500">{error.message}</p> : null}
                 </div>
