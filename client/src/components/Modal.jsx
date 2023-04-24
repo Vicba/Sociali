@@ -23,6 +23,7 @@ function Modal({ open, onClose }) {
             }
         }
 
+
         axios.post("https://sociali.onrender.com/api/posts", formData, config)
             .then(response => window.location.reload())
             .catch(err => console.log(err.message))

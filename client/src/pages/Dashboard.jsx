@@ -23,7 +23,7 @@ export default function Dashboard() {
                 }
             }
 
-            const result = await axios.get("http://localhost:8080/api/posts", config)
+            const result = await axios.get("https://sociali.onrender.com/api/posts", config)
 
             setPosts(result.data)
         }
