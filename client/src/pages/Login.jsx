@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import Image from '../assets/sociali.jpg'
 
+
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
