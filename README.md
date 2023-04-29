@@ -4,6 +4,7 @@ You can like users posts and create, delete your own posts.
 
 # Status
 Pending: still need to work on the site. (school refuses me to have free time 🙃 )
+
 **Fixes:** changes I need to do are below. Contact me if you can help me or find other things.
 
 # Images
