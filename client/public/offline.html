@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline</title>
+    <link rel="stylesheet" href="/no-internet.css">
+</head>
+
+<body>
+    <main>
+        <img src="/no-internet.jpg" alt="no-internet">
+        <h1>No Internet Connection</h1>
+        <button id="try-again-button">Try Again</button>
+    </main>
+
+    <script>
+        const tryAgainButton = document.getElementById('try-again-button');
+
+        tryAgainButton.addEventListener('click', () => {
+            location.reload();
+        });
+    </script>
+</body>
+
+</html>
