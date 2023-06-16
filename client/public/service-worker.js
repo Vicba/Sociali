@@ -1,8 +1,8 @@
 const CACHE_NAME = 'my-cache';
 const RESOURCES_TO_CACHE = [
-  "./offline.html",
-  "./no-internet.css",
-  "./no-internet.jpg",
+  "/offline.html",
+  "/no-internet.css",
+  "/no-internet.jpg",
   "/"
   // Add other resources to cache here
 ];
@@ -27,14 +27,15 @@ self.addEventListener("fetch", (event) => {
       }
       const cache = await caches.open(CACHE_NAME);
       const response = await cache.match(event.request);
-      if (response && navigator.onLine) {
+      if (response) {
         return response;
       }
-      const offlineResponse = await cache.match("/offline.html");
-      return offlineResponse || fetch(event.request);
+      const offlineResponse = await cache.match(requestUrl.pathname);
+      return offlineResponse || cache.match("/offline.html") || fetch(event.request);
     })()
   );
 });
+
 
 
 self.addEventListener("activate", (event) => {
