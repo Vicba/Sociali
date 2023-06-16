@@ -1,8 +1,8 @@
 const CACHE_NAME = 'my-cache';
 const RESOURCES_TO_CACHE = [
-  "/offline.html",
-  "/no-internet.css",
-  "/no-internet.jpg",
+  "./offline.html",
+  "./no-internet.css",
+  "./no-internet.jpg",
   "/"
   // Add other resources to cache here
 ];
