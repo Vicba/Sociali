@@ -23,7 +23,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "sociali.netlify.app",
+  "start_url": "https://sociali.netlify.app",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
